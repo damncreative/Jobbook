@@ -2,29 +2,31 @@ require 'lib/view_helper'
 
 
 class Application extends Backbone.Marionette.Application
-    initialize: =>
+  initialize: =>
          
-        @on("initialize:after", (options) =>
-            Backbone.history.start();
-            # Freeze the object
-            Object.freeze? this
-        )
+    @on "initialize:after", (options) =>
+      Backbone.history.start();
+      # Freeze the object
+      Object.freeze? this
 
-        @addInitializer( (options) =>
+    @addInitializer (options) =>
 
-            AppLayout = require 'views/AppLayout'
-            @layout = new AppLayout()
-            @layout.render()
-            
-        )
+      @firebase = new Firebase("https://jobbook.firebaseIO.com/")
+      @authClient = new FirebaseSimpleLogin @firebase, (error, user) =>
+        console.log error if error
+        console.log 'User ID: ' + user.id + ', Provider: ' + user.provider if user
+        console.log 'No User' unless user
 
-        @addInitializer((options) =>
-            # Instantiate the router
-            Router = require 'lib/router'
-            @router = new Router()
-        )
+      AppLayout = require 'views/AppLayout'
+      @layout = new AppLayout()
+      @layout.render()
 
-        @start()
+    @addInitializer (options) =>
+      # Instantiate the router
+      Router = require 'lib/router'
+      @router = new Router()
+
+    @start()
 
 
 

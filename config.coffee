@@ -1,5 +1,13 @@
 exports.config =
   # See docs at http://brunch.readthedocs.org/en/latest/config.html.
+  plugins:
+    autoReload:
+      enabled:
+        css: on
+        js: on
+        assets: on
+    port: [35729]
+    delay: 200 if require('os').platform() is 'win32'
   files:
     javascripts:
       defaultExtension: 'coffee'
