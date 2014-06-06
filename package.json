@@ -1,0 +1,39 @@
+{
+  "author": "MRW Neundorf",
+  "name": "Jobbook",
+  "description": "MarionetteJS application",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Naxmeify/Jobbook",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/Naxmeify/Jobbook"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "postinstall": "brunch b",
+    "start": "brunch watch --server",
+    "test": "brunch b & mocha-phantomjs -R spec public/test/index.html",
+    "testwb": "mocha-phantomjs -R spec public/test/index.html"
+  },
+  "dependencies": {
+    "javascript-brunch": ">= 1.0 < 1.7",
+    "coffee-script-brunch": ">= 1.0 < 1.7",
+    "css-brunch": ">= 1.0 < 1.7",
+    "stylus-brunch": ">= 1.0 < 1.7",
+    "handlebars-brunch": ">= 1.0 < 1.7",
+    "uglify-js-brunch": ">= 1.0 < 1.7",
+    "clean-css-brunch": ">= 1.0 < 1.7",
+    "brunch": "^1.7.13"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha-phantomjs": "^3.3.2",
+    "phantomjs": "^1.9.7-5"
+  }
+}
