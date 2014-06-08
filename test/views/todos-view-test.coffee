@@ -12,8 +12,8 @@ describe 'TodosView', ->
   afterEach ->
     @view.close()
 
-  it 'should auto-render .page-header', ->
-    expect(@view.$el.find '.page-header').to.have.length 1
+  # it 'should auto-render .page-header', ->
+  #   expect(@view.$el.find '.page-header').to.have.length 1
 
   it 'should auto-render ui input #new-item', ->
     expect(@view.$el.find '#new-item').to.have.length 1

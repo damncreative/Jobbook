@@ -10,13 +10,19 @@ class Application extends Backbone.Marionette.Application
       Object.freeze? this
 
     @addInitializer (options) =>
-
+      # Authentication
+      that = @
+      @user = null
       @firebase = new Firebase("https://jobbook.firebaseIO.com/")
       @authClient = new FirebaseSimpleLogin @firebase, (error, user) =>
         console.log error if error
-        console.log 'User ID: ' + user.id + ', Provider: ' + user.provider if user
         console.log 'No User' unless user
+        
+        if user
+          console.log 'User ID: ' + user.id + ', Provider: ' + user.provider 
+          that.user = user
 
+    @addInitializer (options) =>
       AppLayout = require 'views/AppLayout'
       @layout = new AppLayout()
       @layout.render()
